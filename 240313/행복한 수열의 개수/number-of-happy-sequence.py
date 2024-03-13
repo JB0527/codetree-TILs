@@ -1,7 +1,8 @@
+"""
 from collections import defaultdict
 N,M = map(int,input().split())
 arr = [list(map(int,input().split())) for _ in range(N)]
-"""
+
 answer = 0
 check = defaultdict
 for row in arr:
@@ -17,25 +18,6 @@ for i in range(N):
         answer += 1
 print(answer)
 """
-answer = 0
-for row in arr:
-    check = defaultdict(int)
-    for i in row:
-        check[i] += 1
-        if check[i] >= M:
-            answer += 1
-            break
-
-# Check happy sequences in columns
-for i in range(N):
-    check = defaultdict(int)
-    for j in range(N):
-        check[arr[j][i]] += 1
-        if check[arr[j][i]] >= M:
-            answer += 1
-            break
-
-print(answer)
 
 N, M = map(int, input().split())
 
