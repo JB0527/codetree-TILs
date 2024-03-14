@@ -18,16 +18,18 @@ def calculate_cost(path, info):
     cost = 0
     n = len(path)
     for i in range(n - 1):
-        if info[path[i]][path[i + 1]] == 0:
-            continue
         cost += info[path[i]][path[i + 1]]
     cost += info[path[-1]][path[0]]  
     return cost
 
 n = int(input())
 info = [list(map(int, input().split())) for _ in range(n)]
+for _,i in enumerate(info):
+    for tmp,j in enumerate(i):
+        if j == 0:
+            info[_][tmp] = 100
 chars = list(range(n))
-min_cost = float('inf')
+min_cost = float('inf') 
 
 for path in itertools.permutations(chars):
     cost = calculate_cost(path, info)
