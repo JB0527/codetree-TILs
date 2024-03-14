@@ -18,6 +18,8 @@ def calculate_cost(path, info):
     cost = 0
     n = len(path)
     for i in range(n - 1):
+        if info[path[i]][path[i + 1]] == 0:
+            continue
         cost += info[path[i]][path[i + 1]]
     cost += info[path[-1]][path[0]]  
     return cost
