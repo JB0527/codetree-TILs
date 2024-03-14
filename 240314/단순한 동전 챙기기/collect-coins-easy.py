@@ -16,22 +16,27 @@ for i,row in enumerate(board):
         else:
             arr[int(num)] = (i,j)
 
-length = len(arr)
 
 def distance(list1,list2):
     x1, y1 = list1
     x2, y2 = list2
     return abs(x1-x2) + abs(y1-y2)
+length = len(arr)
 
 #arr의 배열중 3개선택 -> 이걸 재귀로?
-for i in range(1,length):
-    for j in range(i+1,length):
-        for k in range(j+1,length):
+for i in range(1,10):
+    for j in range(i+1,10):
+        for k in range(j+1,10):
+            if i not in arr:
+                continue
+            if j not in arr:
+                continue
+            if k not in arr:
+                continue
             move=0
             direct = [start,arr[i],arr[j],arr[k],end]
             for idx in range(4):
                 move += distance(direct[idx],direct[idx+1])
-
             if min_move == -1:
                 min_move = move
                 continue
