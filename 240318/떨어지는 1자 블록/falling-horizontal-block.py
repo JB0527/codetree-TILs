@@ -4,7 +4,7 @@ arr = [list(map(int,input().split())) for _ in range(n)]
 for j in range(n):
     for i in range(m):
         if arr[j-1][k+i-1] == 0:
-            True
+            tmp = n-1
         elif arr[j-1][k+i-1] == 1:
             tmp = j-2
             break
