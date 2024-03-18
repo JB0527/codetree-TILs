@@ -9,10 +9,14 @@ for j in range(n-1):
             arr[j-1][k+i-1] = 1
             tmp = j-1
             break
-
-for i in range(k-1, k+m-1):
-    arr[tmp][i] = 1
-
+if tmp == True:
+    for i in range(k-1, k+m-1):
+        arr[tmp][i] = 1
+else:
+    tmp = n-1
+    for i in range(k-1, k+m-1):
+        arr[tmp][i] = 1
+        
 for i in range(n):
     for j in range(n):
         print(arr[i][j], end = " ")
