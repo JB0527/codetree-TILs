@@ -16,4 +16,4 @@ for i in range(k-1, k+m-1):
 for i in range(n):
     for j in range(n):
         print(arr[i][j], end = " ")
-    print()
+    print().rstrip()
