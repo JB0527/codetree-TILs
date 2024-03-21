@@ -23,18 +23,11 @@ def bfs():
         elif num // 2 not in visited and num % 2 == 0:
             visited.append(num // 2)
             que.append((num//2,time + 1))
-                
-        elif num % 2 != 0 and num% 3 != 0:
-            if num+1 not in visited and (num+1) % 3 == 0:
-                visited.append(num+1)
-                que.append((num+1,time + 1))
-            elif num-1 not in visited and (num-1) % 3 == 0:
-                visited.append(num-1)
-                que.append((num-1,time + 1)) 
-            elif num-1 not in visited and (num-1) % 2 == 0:
-                visited.append(num-1)
-                que.append((num-1,time + 1))
-            elif num+1 not in visited and (num+1) % 2 == 0:
-                visited.append(num+1)
-                que.append((num+1,time + 1))
+        elif num+1 not in visited:
+            visited.append(num+1)
+            que.append((num+1,time + 1))
+        elif num-1 not in visited:
+            visited.append(num-1)
+            que.append((num-1,time + 1)) 
+            
 bfs()
