@@ -16,18 +16,17 @@ def bfs():
             answer = time
             return print(answer)
 
-        elif num // 3 not in visited and num % 3 == 0:
+        elif num//3 not in visited and num % 3 == 0:
             visited.append(num // 3)
             que.append((num//3,time + 1))
-                
-        elif num // 2 not in visited and num % 2 == 0:
+        elif num//2 not in visited and num % 2 == 0:
             visited.append(num // 2)
             que.append((num//2,time + 1))
-        elif num+1 not in visited:
-            visited.append(num+1)
-            que.append((num+1,time + 1))
         elif num-1 not in visited:
             visited.append(num-1)
-            que.append((num-1,time + 1)) 
+            que.append((num-1,time + 1))
+        elif num+1 not in visited:
+            visited.append(num+1)
+            que.append((num+1,time + 1)) 
             
 bfs()
