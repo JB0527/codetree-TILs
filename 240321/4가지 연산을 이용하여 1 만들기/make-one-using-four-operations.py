@@ -34,4 +34,7 @@ def bfs():
             elif num-1 not in visited and (num-1) % 2 == 0:
                 visited.append(num-1)
                 que.append((num-1,time + 1))
+            elif num+1 not in visited and (num-1) % 2 == 0:
+                visited.append(num+1)
+                que.append((num+1,time + 1))
 bfs()
