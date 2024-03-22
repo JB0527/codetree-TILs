@@ -1,9 +1,10 @@
 n = int(input())
+dp = [0 for _ in range(50)]# (n<45)
 
-def fibonachi(n):
-    prev = 0
-    cur = 1
-    for i in range(n):
-        cur = prev + cur
-    return print(cur)
-fibonachi(n)
+dp[1] = 1
+dp[2] = 1
+
+for i in range(3,n+1):
+    dp[i] = dp[i-1]+dp[i-2]
+
+dp(n)
