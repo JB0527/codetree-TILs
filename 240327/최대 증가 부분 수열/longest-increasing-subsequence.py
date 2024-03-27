@@ -1,17 +1,11 @@
 N = int(input())
-lists = list(map(int,input().split()))
-#dp = [0 for _ in range(N)]
-num = 0
-answer = []
-i = 0
-for i in range(N):
-    if lists[i] > num:
-        num = lists[i]
-        answer.append(lists[i])
-        i+=1
-        continue
-    else:
-        i+=1
-        continue
+lists = [0] + list(map(int,input().split()))
+dp = [0 for _ in range(N+1)]
 
-print(len(answer))
+dp[1]=1
+for i in range(1,N+1):
+    for j in range(i):
+        if lists[i] > lists[j]:
+            dp[i] = max(dp[i],dp[j]+1)
+
+print(max(dp))
