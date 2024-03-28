@@ -26,8 +26,13 @@ for i, tmp in enumerate(p[real:]):
             elif tmp == '.':
                 continue
             else:
+                answer = 'false'
                 break
         elif j == tmp:
             continue
-    print('true')
-    break
+    if answer == 'false':
+        print('false')
+        break
+    else:
+        print('true')
+        break
