@@ -14,6 +14,8 @@ for j in s:
             continue
         elif j == k:
             real = l
+        else:
+            real = 0
 
 for i, tmp in enumerate(p[real:]):
     for j in s:
