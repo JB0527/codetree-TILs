@@ -1,3 +1,5 @@
+import sys
+INT_MIN = -sys.maxsize
 n = int(input())
 arr = list(map(int,input().split()))
 dp = [0]*(n+1)
