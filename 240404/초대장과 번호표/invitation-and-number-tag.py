@@ -11,7 +11,7 @@ for i in range(G):
         if k in stmp:
             stmp.remove(k)
             num -= 1
-    if num <= 2 :
+    if num <2 :
         for p in stmp:
             ans.append(p)
     arr[i][0] = len(stmp)
