@@ -9,18 +9,6 @@ for i in range(G):
     for k in ans:
         if k in stmp:
             stmp.remove(k)
-        if num <= 2 :
-            for p in stmp:
-                ans.append(p)
-        #for k in ans:
-         #   if num <= 2 and k in stmp
-          #      ans.append(j)
-for i in range(G):
-    num = arr[i][0]
-    stmp = set(arr[i][1:])
-    for k in ans:
-        if k in stmp:
-            stmp.remove(k)
             num -= 1
     if num <= 2 :
         for p in stmp:
