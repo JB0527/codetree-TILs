@@ -30,6 +30,7 @@ for i in range(G):
             ans.append(p)
 print(len(set(ans)))
 """
+"""
 from collections import deque
 
 # 변수 선언 및 입력:
@@ -71,3 +72,35 @@ while q:
 
 # 초대장을 받는 인원을 출력합니다.
 print(ans)
+"""
+N, G = map(int, input().split())
+
+groups = [list(map(int, input().split())) for _ in range(G)]
+
+invited = {1}  # People who have already received an invitation
+invited_list = [1]  # List to keep track of invited people
+
+for group in groups:
+    group_size = group[0]
+    group_members = set(group[1:])
+    for person in invited_list:
+        if person in group_members:
+            group_members.remove(person)
+            group_size -= 1
+    if group_size <= 2:
+        invited |= group_members
+        invited_list.extend(group_members)
+
+# Second pass to check if any group still has fewer than 2 remaining invitations
+for group in groups:
+    group_size = group[0]
+    group_members = set(group[1:])
+    for person in invited_list:
+        if person in group_members:
+            group_members.remove(person)
+            group_size -= 1
+    if group_size < 2:
+        invited |= group_members
+        invited_list.extend(group_members)
+
+print(len(invited))
