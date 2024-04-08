@@ -14,9 +14,7 @@ for i in range(1, N):
 R[N-1] = 0
 for i in range(N-2, -1, -1):
     R[i] = R[i + 1] + abs(arr[i + 1][0] - arr[i][0]) + abs(arr[i+1][1] - arr[i][1])
-print(L)
-print(R)
-print(arr)
+
 ans = INT_MAX
 for i in range(1, N- 1):
     ans = min(ans, L[i - 1] + R[i + 1] + abs(arr[i + 1][0] - arr[i - 1][0]) + abs(arr[i + 1][1] - arr[i - 1][1]))
