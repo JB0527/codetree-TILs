@@ -24,18 +24,18 @@ for j,value in enumerate(sub1):
         if abs(value - v) > k :
             subcheck1[j] += 1
 
-for k,v in enumerate(subcheck1):
+for q,v in enumerate(subcheck1):
     if v > (sum(subcheck1)/len(subcheck1)):
-        sub1.pop(k)
+        sub1.pop(q)
 
 for j,value in enumerate(sub2):
     for v in sub2:
         if abs(value - v) > k :
             subcheck2[j] += 1
 
-for k,v in enumerate(subcheck2):
+for p,v in enumerate(subcheck2):
     if v > (sum(subcheck2)/len(subcheck2)):
-        sub2.pop(k)
+        sub2.pop(p)
 
 answer = len(sub1) + len(sub2)
 
