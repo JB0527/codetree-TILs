@@ -16,7 +16,7 @@ def finding(arr):
             arr.pop(j)
     return answer
 answers = 0
-while len(arr) > 1:
+while len(arr) >= 1:
     answers += finding(arr)
 #print(arr)
 print(answers+tmp)
