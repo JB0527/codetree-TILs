@@ -21,9 +21,7 @@ subcheck2 = [0 for i in range(len(sub2))]
 
 for j,value in enumerate(sub1):
     for v in sub1:
-        if value - v > k :
-            subcheck1[j] += 1
-        elif v - value > k :
+        if abs(value - v) > k :
             subcheck1[j] += 1
 
 for k,v in enumerate(subcheck1):
@@ -32,9 +30,7 @@ for k,v in enumerate(subcheck1):
 
 for j,value in enumerate(sub2):
     for v in sub2:
-        if value - v > k :
-            subcheck2[j] += 1
-        elif v - value > k :
+        if abs(value - v) > k :
             subcheck2[j] += 1
 
 for k,v in enumerate(subcheck2):
