@@ -6,9 +6,8 @@ def apply_bomb1(i, j, affected):
     for loc in range(max(i-2,j), min(i+3, j)):
         affected.add((loc, j))
     return affected
-
 def apply_bomb2(i, j, affected):
-    """폭탄 2 적용"""
+    """폭탄 2 효과 (상하좌우)"""
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]
     affected.add((i, j))
     for dx, dy in directions:
@@ -18,7 +17,7 @@ def apply_bomb2(i, j, affected):
     return affected
 
 def apply_bomb3(i, j, affected):
-    """폭탄 3 적용"""
+    """폭탄 3 효과 (대각선)"""
     directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
     affected.add((i, j))
     for dx, dy in directions:
@@ -27,23 +26,18 @@ def apply_bomb3(i, j, affected):
             affected.add((x, y))
     return affected
 
-def calculate_score(affected):
-    """폭탄 배열에서 영향을 받은 셀의 총합 계산"""
-    return len(affected)
-
 # 폭탄 위치를 저장
 loclist = [(i, j) for i in range(n) for j in range(n) if grid[i][j] == 1]
 
 # 초기화된 최고 점수
 best_score = 0
-final_bombarr = [[0] * n for _ in range(n)]
 
-# 폭탄 위치에 대해 모든 조합을 탐색
+# 모든 조합 탐색
 for bomb_type_combination in range(3 ** len(loclist)):
-    affected = set()  # 중복을 방지하기 위한 집합
+    affected = set()  # 영향을 받은 위치 저장
     temp_combination = bomb_type_combination
     for (i, j) in loclist:
-        bomb_type = temp_combination % 3  # 0: bomb1, 1: bomb2, 2: bomb3
+        bomb_type = temp_combination % 3  # 폭탄 유형 결정 (0, 1, 2)
         temp_combination //= 3
         if bomb_type == 0:
             affected = apply_bomb1(i, j, affected)
@@ -53,12 +47,10 @@ for bomb_type_combination in range(3 ** len(loclist)):
             affected = apply_bomb3(i, j, affected)
     
     # 현재 조합의 점수 계산
-    current_score = calculate_score(affected)
-    if current_score > best_score:
-        best_score = current_score
-        final_bombarr = [[1 if (i, j) in affected else 0 for j in range(n)] for i in range(n)]
+    current_score = len(affected)
+    best_score = max(best_score, current_score)
 
-
+# 결과 출력
 print(best_score)
 """
 n = int(input())
