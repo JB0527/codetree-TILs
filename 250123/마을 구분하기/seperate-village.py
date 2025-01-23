@@ -1,102 +1,45 @@
-# from collections import deque
-# n = int(input())
-# grid = [list(map(int, input().split())) for _ in range(n)]
-# # Write your code here!
-# visited = [[0 for _ in range(n)] for _ in range(n)]
-# groups = []
+from collections import deque
 
-# dxs =[0,0,-1,1]
-# dys =[-1,1,0,0]
+# 입력 받기
+n = int(input())  # 격자의 크기 (n x n)
+grid = [list(map(int, input().split())) for _ in range(n)]  # 격자 상태 (0 또는 1)
 
-# def dfs(i,j):
-#     visited[i][j]= 1
-#     count = 1
-#     q = deque()
-#     q.append((i,j))
-#     while q:
-#         i,j = q.popleft()
-#         for dx,dy in zip(dxs,dys):
-#             if 0<=i+dx<n and 0<=j+dy<n:
-#                 if grid[i+dx][j+dy] == 1 and visited[i+dx][j+dy]==0:
-#                     visited[i+dx][j+dy] = 1
-#                     count +=1
-#                     q.append((i+dx,j+dy))
-#     return count
+# 방문 여부를 기록하는 배열
+visited = [[0 for _ in range(n)] for _ in range(n)]  # 모든 칸을 방문하지 않은 상태로 초기화
+groups = []  # 각 그룹(덩어리)의 크기를 저장하는 리스트
 
-# for i in range(n):
-#     for j in range(n):
-#         if grid[i][j] == 1 and visited[i][j]==0:
-#             groups.append(dfs(i,j))
-# groups = sorted(groups)
-# print(len(groups))
-# for _ in (groups):
-#     print(_)
-# 변수 선언 및 입력
-n = int(input())
-grid = [
-    list(map(int, input().split()))
-    for _ in range(n)
-]
+# 이동 방향 정의 (상, 하, 좌, 우)
+dxs = [0, 0, -1, 1]
+dys = [-1, 1, 0, 0]
 
-visited = [
-    [False for _ in range(n)]
-    for _ in range(n)
-]
+# DFS를 활용하여 연결된 1의 그룹(덩어리)을 찾는 함수
+def dfs(i, j):
+    visited[i][j] = 1  # 현재 위치를 방문 처리
+    count = 1  # 현재 그룹의 크기 (시작점 포함)
+    q = deque()  # BFS를 위한 큐 (DFS처럼 작동)
+    q.append((i, j))  # 시작점을 큐에 추가
 
-people_num = 0
-people_nums = list()
+    while q:  # 큐가 빌 때까지 반복
+        i, j = q.popleft()  # 큐에서 현재 좌표를 꺼냄
+        for dx, dy in zip(dxs, dys):  # 상하좌우 방향으로 이동
+            nx, ny = i + dx, j + dy  # 다음 좌표 계산
+            if 0 <= nx < n and 0 <= ny < n:  # 격자 범위 안에 있는지 확인
+                if grid[nx][ny] == 1 and visited[nx][ny] == 0:  # 연결된 1이고 방문하지 않은 경우
+                    visited[nx][ny] = 1  # 방문 처리
+                    count += 1  # 그룹 크기 증가
+                    q.append((nx, ny))  # 다음 좌표를 큐에 추가
+    return count  # 그룹의 크기 반환
 
-# 주어진 위치가 격자를 벗어나는지 여부를 반환합니다.
-def in_range(x, y):
-    return 0 <= x and x < n and 0 <= y and y < n
-
-
-# 주어진 위치로 이동할 수 있는지 여부를 확인합니다.
-def can_go(x, y):
-    if not in_range(x, y):
-        return False
-    
-    if visited[x][y] or grid[x][y] == 0:
-        return False
-    
-    return True
-
-def dfs(x, y):
-    global people_num
-    
-    # 0: 오른쪽, 1: 아래쪽, 2: 왼쪽, 3: 위쪽
-    dxs, dys = [0, 1, 0, -1], [1, 0, -1, 0]
-    
-    # 네 방향에 각각에 대하여 DFS 탐색을 합니다.
-    for dx, dy in zip(dxs, dys):
-        new_x, new_y = x + dx, y + dy
-        
-        if can_go(new_x, new_y):
-            visited[new_x][new_y] = True
-            
-            #  마을에 존재하는 사람을 한 명 추가해줍니다.
-            people_num += 1
-            dfs(new_x, new_y)
-
-# 격자의 각 위치에서 탐색을 시작할 수 있는 경우
-# 한 마을에 대한 DFS 탐색을 수행합니다.
+# 모든 격자를 순회하며 그룹 탐색
 for i in range(n):
     for j in range(n):
-        if can_go(i, j):
-            # 해당 위치를 방문할 수 있는 경우 visited 배열을 갱신하고
-            # 새로운 마을을 탐색한다는 의미로 people_num을 1으로 갱신합니다.
-            visited[i][j] = True
-            people_num = 1
-            
-            dfs(i, j)
-            
-            # 한 마을에 대한 탐색이 끝난 경우 마을 내의 사람 수를 저장합니다.
-            people_nums.append(people_num)
+        if grid[i][j] == 1 and visited[i][j] == 0:  # 1이고 방문하지 않은 경우
+            groups.append(dfs(i, j))  # 새로운 그룹 발견 -> 크기를 계산해 리스트에 추가
 
-# 각 마을 내 사람의 수를 오름차순으로 정렬합니다.
-people_nums.sort()
+# 그룹 크기를 오름차순으로 정렬
+groups = sorted(groups)
 
-print(len(people_nums))
-
-for i in range(len(people_nums)):
-    print(people_nums[i])
+# 결과 출력
+print(len(groups))  # 총 그룹의 개수 출력
+for group_size in groups:  # 각 그룹의 크기를 출력
+    print(group_size)
