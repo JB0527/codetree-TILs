@@ -11,4 +11,5 @@ dp[1] = 1
 for i in range(1,n):
     dp[i+1] = dp[i]+dp[i-1]
 
-print(dp[n])
+result = (dp[n] %10007)
+print(result)
