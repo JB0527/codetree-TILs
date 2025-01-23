@@ -1,7 +1,7 @@
 n, k = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 r, c = map(int, input().split())
-
+r,c = r-1,c-1
 # 이동 방향 (상, 하, 좌, 우)
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -39,7 +39,7 @@ def dfs(x, y):
 
 # k번 이동
 for _ in range(k):
-    r, c = dfs(r - 1, c - 1)
+    r, c = dfs(r, c)
 
 # 최종 위치 출력
 print(r + 1, c + 1)
