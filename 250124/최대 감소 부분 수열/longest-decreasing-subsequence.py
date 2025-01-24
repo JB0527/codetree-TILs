@@ -9,4 +9,4 @@ for i in range(1, n):
             dp[i] = max(dp[i], dp[j] + 1)
 
 # 결과 출력
-print((dp))
+print(max(dp))
