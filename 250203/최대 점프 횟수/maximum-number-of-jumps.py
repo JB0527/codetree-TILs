@@ -11,6 +11,6 @@ for idx,value in enumerate(arr):
                 if max(arr[idx+1:idx+j+1]) != 0:
                     dp[idx+j] = max(dp[idx+j],dp[idx] + 1)
 
-print(max(dp)-1)
+print(max(dp[:n-1]))
 
 
