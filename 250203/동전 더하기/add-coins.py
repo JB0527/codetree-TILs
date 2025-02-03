@@ -7,5 +7,4 @@ for i in range(n-1,0,-1):
     ans = k // coins[i]
     k -= ans*coins[i]
     counts += ans
-if k == 0:
-    print(counts)
+print(counts)
