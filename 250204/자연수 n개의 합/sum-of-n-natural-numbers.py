@@ -11,4 +11,4 @@ while left <= right:
         max_num = max(max_num,mid)
     else:
         right = mid - 1
-print((left+right)//2)
+print(max_num)
