@@ -13,7 +13,7 @@ for _ in range(n-1):
     x,y,score= tuple(map(int, input().split()))
     edges[x].append((y,score))
     edges[y].append((x,score))
-print(edges)
+# print(edges)
 def dfs(x,total_score):
     for y,score in edges[x]:
         if not visited[y]:
