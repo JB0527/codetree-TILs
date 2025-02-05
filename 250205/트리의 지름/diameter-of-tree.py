@@ -1,7 +1,7 @@
 import sys
 from collections import deque
 
-sys.setrecursionlimit(100000)
+# sys.setrecursionlimit(100000)
 
 n = int(input())
 edges = [[] for _ in range(n + 1)]
