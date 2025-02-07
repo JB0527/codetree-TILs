@@ -1,7 +1,6 @@
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
 visited = [[False]*n for _ in range(n)]
-# print(visited)
 dxs = {0,1} #아래
 dys = {1,0} #오른쪽
 # Write your code here!
@@ -14,12 +13,13 @@ def dfs(x,y):
         cury = y+dy
         if 0<=curx<n and 0<=cury<n and visited[curx][cury] == False:
             if grid[curx][cury] == 1:
-                visited[curx][cury] == True
+                visited[curx][cury] = True
+                # print(visited)
                 dfs(curx,cury)
         ansx = curx
         ansy = cury
         if ansx == n-1 and ansy ==n-1:
             ans = 1
 
-dfs(0,0)  
+dfs(0,0)
 print(ans)
