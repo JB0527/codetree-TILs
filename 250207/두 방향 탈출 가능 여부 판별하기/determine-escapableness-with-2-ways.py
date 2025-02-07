@@ -1,6 +1,7 @@
 n, m = map(int, input().split())
 grid = [list(map(int, input().split())) for _ in range(n)]
-visited = [[False for _ in range(n)]*n]
+visited = [[False]*n for _ in range(n)]
+# print(visited)
 dxs = {0,1} #아래
 dys = {1,0} #오른쪽
 # Write your code here!
