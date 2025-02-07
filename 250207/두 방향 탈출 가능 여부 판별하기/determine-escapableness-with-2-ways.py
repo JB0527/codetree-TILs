@@ -11,7 +11,7 @@ def dfs(x,y):
     for dx,dy in zip(dxs,dys):
         curx = x+dx
         cury = y+dy
-        if 0<=curx<n and 0<=cury<n and visited[curx][cury] == False:
+        if 0<=curx<m and 0<=cury<n and visited[curx][cury] == False:
             if grid[curx][cury] == 1:
                 visited[curx][cury] = True
                 # print(visited)
