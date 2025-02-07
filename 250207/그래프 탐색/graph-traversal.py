@@ -8,7 +8,6 @@ visited = [False] *(n+1)
 for x,y in arr:
     edges[x].append(y)
     edges[y].append(x)
-print(edges)
 ans = []
 def traversal(x):
     global ans
