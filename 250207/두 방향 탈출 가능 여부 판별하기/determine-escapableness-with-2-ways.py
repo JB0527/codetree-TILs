@@ -16,7 +16,7 @@ def dfs(x,y):
                 dfs(curx,cury)
         ansx = curx
         ansy = cury
-        if ansx == 4 and ansy ==4:
+        if ansx == n-1 and ansy ==n-1:
             ans = 1
 
 dfs(0,0)  
