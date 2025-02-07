@@ -18,7 +18,7 @@ def traversal(x):
             ans.append(1)
 
 traversal(1)
-if m != 1:
+if m != 0:
     print(len(ans)-1)
 else:
     print(0)
