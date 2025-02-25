@@ -19,12 +19,13 @@ def bfs(x,y):
         for dx,dy in zip(dxs,dys):
             nx = ax+dx
             ny = ay+dy
-            if 0<=nx<m and 0<=ny<n and arr[nx][ny]==1 and visited[nx][ny] == False:
-                visited[nx][ny] = True
-                step[nx][ny] += (step[ax][ay]+1)
-                if nx == m-1 and ny == n-1:
-                    ans = step[m-1][n-1]
-                q.append((nx,ny))
+            if 0<=nx<m and 0<=ny<n :
+                if arr[nx][ny]==1 and visited[nx][ny] == False:
+                    visited[nx][ny] = True
+                    step[nx][ny] += (step[ax][ay]+1)
+                    if nx == m-1 and ny == n-1:
+                        ans = step[m-1][n-1]
+                    q.append((nx,ny))
 
 dxs = [0,1,0,-1]
 dys = [1,0,-1,0]
