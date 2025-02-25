@@ -19,7 +19,7 @@ def bfs(x,y):
         for dx,dy in zip(dxs,dys):
             nx = ax+dx
             ny = ay+dy
-            if 0<=nx<m and 0<=ny<n :
+            if 0<=nx<n and 0<=ny<m :
                 if arr[nx][ny]==1 and visited[nx][ny] == False:
                     visited[nx][ny] = True
                     step[nx][ny] += (step[ax][ay]+1)
