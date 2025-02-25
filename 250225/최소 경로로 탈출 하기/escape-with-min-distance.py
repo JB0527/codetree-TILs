@@ -22,7 +22,6 @@ def bfs(x,y):
             if 0<=nx<m and 0<=ny<n and arr[nx][ny]==1 and visited[nx][ny] == False:
                 visited[nx][ny] = True
                 step[nx][ny] += (step[ax][ay]+1)
-                ans = step[m-1][n-1]
                 if nx == m-1 and ny == n-1:
                     ans = step[m-1][n-1]
                 q.append((nx,ny))
