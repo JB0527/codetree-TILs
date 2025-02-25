@@ -24,8 +24,7 @@ def bfs(x,y):
                 step[nx][ny] += (step[ax][ay]+1)
                 ans = step[m-1][n-1]
                 if nx == m-1 and ny == n-1:
-                    print(ans)
-                    exit(0)
+                    ans = step[m-1][n-1]
                 q.append((nx,ny))
 
 dxs = [0,1,0,-1]
