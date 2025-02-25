@@ -34,5 +34,6 @@ dys = [1,0,-1,0]
 bfs(0,0)
 
 if ans == 10002:
-    print(-1)
+    ans = -1
+print(ans)
 
