@@ -13,7 +13,7 @@ def bfs(i,j,step):
     q.append((i,j,step))
     while q:
         i,j,step = q.popleft()
-        if i == r2 and j ==c2:
+        if i == r2-1 and j ==c2-1:
             return step
         for dy,dx in zip(dys,dxs):
             ny = dy+j
